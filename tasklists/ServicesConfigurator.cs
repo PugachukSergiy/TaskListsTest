@@ -20,9 +20,6 @@ namespace tasklists
             var contextOptions = new DbContextOptionsBuilder<TaskListDbContext>()
                 .UseSqlServer(dbConnectionString)
                 .Options;
-            //var contextOptions = new DbContextOptionsBuilder<TaskListDbContext>()
-            //    .UseNpgsql("Host=localhost;Port=5432;Database=tasklists;Username=postgres;Password=password1!")
-            //    .Options;
             services.AddSingleton(contextOptions);
             services.AddDbContext<TaskListDbContext>();
         }
