@@ -1,4 +1,5 @@
-﻿using tasklists.Contract;
+﻿using tasklists.BuisnessLogic.Helpers;
+using tasklists.Contract;
 using tasklists.Contract.Requests;
 using tasklists.Contract.Responses;
 
@@ -16,7 +17,9 @@ namespace tasklists.BuisnessLogic.Handlers
             if (response.Status != ResponseStatus.OK)
                 return;
 
-            response.TaskLists = await taskListManager.GetTaskListsByUserIdAsync(request.UserId, request.Offset, request.Count);
+            var taskLists = await taskListManager.GetTaskListsByUserIdAsync(request.UserId, request.Offset, request.Count);
+
+            response.TaskLists = taskLists.MapToDTOPreviews();
         }
 
         private void ValidateRequest(GetTaskListsRequest request, TaskListsResponse response)

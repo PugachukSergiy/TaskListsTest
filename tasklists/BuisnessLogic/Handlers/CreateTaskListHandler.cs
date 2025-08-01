@@ -1,4 +1,5 @@
-﻿using tasklists.Contract;
+﻿using tasklists.BuisnessLogic.Helpers;
+using tasklists.Contract;
 using tasklists.Contract.Requests;
 using tasklists.Contract.Responses;
 
@@ -15,8 +16,9 @@ namespace tasklists.BuisnessLogic.Handlers
             ValidateRequest(request, response);
             if (response.Status != ResponseStatus.OK)
                 return;
+            var newTaskList = await taskListManager.CreateTaskListAsync(request.UserId, request.Name);
 
-            response.TaskList = await taskListManager.CreateTaskListAsync(request.UserId, request.Name);
+            response.TaskList = newTaskList.MapToDTO();
         }
 
         private void ValidateRequest(CreateTaskListRequest request, BaseResponse response)

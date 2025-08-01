@@ -1,9 +1,9 @@
-﻿using tasklists.Entities;
+﻿using tasklists.Contract.DTO;
 
 namespace tasklists.Contract.Responses
 {
     public class TaskListSharingsResponse : BaseResponse
     {
-        public List<User>? Sharings { get; set; }
+        public IEnumerable<User>? Sharings { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Core;
+using Microsoft.EntityFrameworkCore;
+using tasklists.BuisnessLogic.Helpers;
 using tasklists.DataAccess;
 using tasklists.Entities;
 
@@ -43,9 +45,8 @@ namespace tasklists.BuisnessLogic
             return _context.TaskLists.Where(x => x.Id == taskListId).FirstOrDefaultAsync();
         }
 
-        public async Task ApplyChangesToTaskListAsync(TaskList taskListInDb, TaskList taskList)
+        public async Task SaveChangesInDbAsync()
         {
-            taskListInDb.Name = taskList.Name;
             await _context.SaveChangesAsync();
         }
 

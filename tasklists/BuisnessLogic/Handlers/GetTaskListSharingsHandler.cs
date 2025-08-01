@@ -1,4 +1,5 @@
-﻿using tasklists.Contract;
+﻿using tasklists.BuisnessLogic.Helpers;
+using tasklists.Contract;
 using tasklists.Contract.Requests;
 using tasklists.Contract.Responses;
 
@@ -23,7 +24,7 @@ namespace tasklists.BuisnessLogic.Handlers
             if (response.Status != ResponseStatus.OK)
                 return;
 
-            response.Sharings = taskListInDb.SharedTo;
+            response.Sharings = taskListInDb.SharedTo!.MapToDTOPreviews();
         }
     }
 }

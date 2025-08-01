@@ -1,9 +1,9 @@
-﻿using tasklists.Entities;
+﻿using tasklists.Contract.DTO;
 
 namespace tasklists.Contract.Responses
 {
     public class TaskListsResponse : BaseResponse
     {
-        public List<TaskList>? TaskLists { get; set; }
+        public IEnumerable<TaskListPreview>? TaskLists { get; set; }
     }
 }

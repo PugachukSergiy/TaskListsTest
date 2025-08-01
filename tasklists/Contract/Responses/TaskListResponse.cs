@@ -1,4 +1,4 @@
-﻿using tasklists.Entities;
+﻿using tasklists.Contract.DTO;
 
 namespace tasklists.Contract.Responses
 {

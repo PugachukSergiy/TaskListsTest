@@ -1,4 +1,5 @@
-﻿using tasklists.Contract;
+﻿using tasklists.BuisnessLogic.Helpers;
+using tasklists.Contract;
 using tasklists.Contract.Requests;
 using tasklists.Contract.Responses;
 
@@ -27,7 +28,9 @@ namespace tasklists.BuisnessLogic.Handlers
             if (response.Status != ResponseStatus.OK)
                 return;
 
-            await taskListManager.ApplyChangesToTaskListAsync(taskListInDb, request.TaskList);
+            taskListInDb.ApplyPropertiesFromDTO(request.TaskList);
+
+            await taskListManager.SaveChangesInDbAsync();
         }
 
         private void ValidateRequest(UpdateTaskListRequest request, BaseResponse response)

@@ -1,7 +1,7 @@
 ﻿using tasklists.Contract.Responses;
 using tasklists.Entities;
 
-namespace tasklists.BuisnessLogic
+namespace tasklists.BuisnessLogic.Helpers
 {
     public static class ValidationHelper
     {
