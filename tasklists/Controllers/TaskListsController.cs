@@ -76,7 +76,7 @@ namespace tasklists.Controllers
             return handleRequest(handler, request);
         }
 
-        [HttpPost("{taskListId}/sharing/{userToShareId}")]
+        [HttpPost("{taskListId}/sharings/{userToShareId}")]
         public Task<BaseResponse> Post([FromServices] ShareTaskListHandler handler, [FromQuery] int userId, int taskListId, int userToShareId)
         {
             var request = new ShareTaskListRequest()
@@ -89,7 +89,7 @@ namespace tasklists.Controllers
             return handleRequest(handler, request);
         }
 
-        [HttpDelete("{taskListId}/sharing/{userToUnshareId}")]
+        [HttpDelete("{taskListId}/sharings/{userToUnshareId}")]
         public Task<BaseResponse> Delete([FromServices] UnshareTaskListHandler handler, [FromQuery] int userId, int taskListId, int userToUnshareId)
         {
             var request = new UnshareTaskListRequest()
